@@ -33,7 +33,7 @@ int led = 13; // on board LED pin blink at startup
 int charspace = 500;
 int charshort = 50;
 int charlong = 250;
-const int update_delay = 10000; // update every 10 seconds.
+const int update_delay = 60000; // update every 60 seconds.
 
 String progress = "*---------"; // you can also display a progress bar optionally
 
@@ -54,7 +54,6 @@ bool first = true;
 
 void setup(){
   pinMode(dht_power, OUTPUT); 
-  digitalWrite(dht_power, HIGH);
   Serial.begin(9600);
   pinMode(led, OUTPUT); 
   digitalWrite(led, HIGH); 
@@ -79,7 +78,10 @@ void loop()
     memset(senseTempVals,0,SENSE_ARRAY_SIZE);
     memset(senseHumidVals,0,SENSE_ARRAY_SIZE);
   }
+  digitalWrite(dht_power, HIGH);
+  delay(150);
   int chk = DHT.read11(DHT11_PIN);
+  digitalWrite(dht_power, LOW);
   Serial.print("Temperature = ");
   Serial.println(DHT.temperature*9/5+32);
   Serial.print("Humidity = ");
