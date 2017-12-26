@@ -28,7 +28,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 dht DHT;
 
 #define DHT11_PIN 7
-int dht_power = 6; // Power DHT11 on pin 6, or separate power pin.
+int dht_power = 12; // Power DHT11 on pin 6, or separate power pin.
 int led = 13; // on board LED pin blink at startup
 int charspace = 500;
 int charshort = 50;
@@ -53,6 +53,7 @@ int scaleHumidVar = 20;
 bool first = true;
 
 void setup(){
+  pinMode(dht_power, OUTPUT); 
   digitalWrite(dht_power, HIGH);
   Serial.begin(9600);
   pinMode(led, OUTPUT); 
