@@ -33,7 +33,7 @@ int led = 13; // on board LED pin blink at startup
 int charspace = 500;
 int charshort = 50;
 int charlong = 250;
-const int update_delay = 60000; // update every 60 seconds.
+const unsigned int update_delay = 60000; // update every 60 seconds.
 
 String progress = "*---------"; // you can also display a progress bar optionally
 
